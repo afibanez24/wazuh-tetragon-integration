@@ -15,9 +15,10 @@ Tetragon + eBPF --------- 100801/100802 ----+--> manager Active Response
                                                          |
                                                   rule 100810
                                                          |
-endpoint Active Response <----------------------- response command
-verify registered process, SIGTERM, observe exit
-                       -------------------------> rule 100811
+Endpoint Active Response <----------------------- response command
+           |
+Terminate process on endpoint
+                       -------------------------> Confirmation alert 100811
 ```
 
 | Rule | Evidence or result |
@@ -26,7 +27,7 @@ verify registered process, SIGTERM, observe exit
 | `100801` | Successful file read-permission check from the selected Tetragon policy |
 | `100802` | TCP connection attempt to the selected receiver |
 | `100810` | Custom correlated sequence with the original evidence and process identity |
-| `100811` | Endpoint response confirmed process exit through a pidfd |
+| `100811` | Confirmation that Active Response terminated the process on the endpoint |
 | `100812` | Containment refused, not executed, or exit not confirmed |
 
 The source alerts remain available for investigation. The summary includes fingerprints and provenance, not file contents. Multiple read-permission checks can legitimately produce multiple `100801` alerts.
