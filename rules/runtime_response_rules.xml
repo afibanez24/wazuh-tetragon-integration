@@ -1,0 +1,17 @@
+<group name="runtime_response,">
+  <rule id="100811" level="5">
+    <decoded_as>json</decoded_as>
+    <field name="integration" type="pcre2">^wazuh_runtime_response$</field>
+    <field name="response.status" type="pcre2">^terminated$</field>
+    <field name="response.verification" type="pcre2">^pidfd_exit_observed$</field>
+    <description>AR: Process terminated. PID $(response.pid).</description>
+    <group>containment_verified,</group>
+  </rule>
+  <rule id="100812" level="5">
+    <decoded_as>json</decoded_as>
+    <field name="integration" type="pcre2">^wazuh_runtime_response$</field>
+    <field name="response.status" type="pcre2">^(refused|unconfirmed|not_executed)$</field>
+    <description>Wazuh Active Response: containment not confirmed. PID $(response.pid), result $(response.status).</description>
+    <group>containment_not_confirmed,</group>
+  </rule>
+</group>

@@ -1,0 +1,17 @@
+<group name="tetragon,">
+  <rule id="100801" level="3">
+    <decoded_as>json</decoded_as>
+    <field name="process_kprobe.policy_name" type="pcre2">^wazuh-demo-file-read$</field>
+    <field name="process_kprobe.function_name" type="pcre2">^security_file_permission$</field>
+    <field name="process_kprobe.return.int_arg" type="pcre2">^0$</field>
+    <description>Tetragon: monitored file read permission granted. Process $(process_kprobe.process.binary), PID $(process_kprobe.process.pid).</description>
+    <group>tetragon_file_read,</group>
+  </rule>
+  <rule id="100802" level="3">
+    <decoded_as>json</decoded_as>
+    <field name="process_kprobe.policy_name" type="pcre2">^wazuh-demo-network$</field>
+    <field name="process_kprobe.function_name" type="pcre2">^tcp_connect$</field>
+    <description>Tetragon: monitored TCP connection attempt. Process $(process_kprobe.process.binary), PID $(process_kprobe.process.pid).</description>
+    <group>tetragon_network,</group>
+  </rule>
+</group>

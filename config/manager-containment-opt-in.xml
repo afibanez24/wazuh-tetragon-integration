@@ -1,0 +1,14 @@
+<!-- OPTIONAL. Enable only after replay and correlation-only validation. -->
+<ossec_config>
+  <command>
+    <name>runtime-contain-simulator</name>
+    <executable>runtime_containment.py</executable>
+    <timeout_allowed>no</timeout_allowed>
+  </command>
+  <active-response>
+    <disabled>no</disabled>
+    <command>runtime-contain-simulator</command>
+    <location>local</location>
+    <rules_id>100810</rules_id>
+  </active-response>
+</ossec_config>

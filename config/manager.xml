@@ -1,0 +1,14 @@
+<!-- Merge these children into ossec_config. Do not replace your configuration. -->
+<ossec_config>
+  <command>
+    <name>fim-tetragon-correlate</name>
+    <executable>fim_tetragon_correlate.py</executable>
+    <timeout_allowed>no</timeout_allowed>
+  </command>
+  <active-response>
+    <disabled>no</disabled>
+    <command>fim-tetragon-correlate</command>
+    <location>server</location>
+    <rules_id>550,100801,100802</rules_id>
+  </active-response>
+</ossec_config>

@@ -1,0 +1,10 @@
+<group name="tetragon_correlation,">
+  <rule id="100810" level="8">
+    <decoded_as>json</decoded_as>
+    <field name="integration" type="pcre2">^fim_tetragon_correlation$</field>
+    <field name="correlation.status" type="pcre2">^complete$</field>
+    <field name="correlation.scope" type="pcre2">^controlled_lab$</field>
+    <description>FIM: File modified with elevated privileges, followed by file access and a TCP connection attempt. PID $(correlation.process.pid).</description>
+    <group>fim_runtime_context,</group>
+  </rule>
+</group>

@@ -1,0 +1,21 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: wazuh-demo-network
+spec:
+  kprobes:
+    - call: tcp_connect
+      syscall: false
+      args:
+        - index: 0
+          type: sock
+      selectors:
+        - matchArgs:
+            - index: 0
+              operator: DAddr
+              values:
+                - "127.0.0.1"
+            - index: 0
+              operator: DPort
+              values:
+                - "18765"

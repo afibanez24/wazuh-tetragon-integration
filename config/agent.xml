@@ -1,0 +1,17 @@
+<!-- Merge directories/whodata into the EXISTING syscheck section. -->
+<ossec_config>
+  <syscheck>
+    <directories check_all="yes" whodata="yes" report_changes="yes">/opt/wazuh-tetragon-demo</directories>
+    <whodata>
+      <provider>audit</provider>
+    </whodata>
+  </syscheck>
+  <localfile>
+    <log_format>json</log_format>
+    <location>/var/log/tetragon/events.json</location>
+  </localfile>
+  <localfile>
+    <log_format>json</log_format>
+    <location>/var/ossec/logs/runtime-containment.jsonl</location>
+  </localfile>
+</ossec_config>
